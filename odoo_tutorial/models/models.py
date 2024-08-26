@@ -68,15 +68,3 @@ class OdooTutorialLine(models.Model):
     _description = 'Odoo Technical Tutorial Line'
 
     odoo_tutorial_id = fields.Many2one(comodel_name="odoo.tutorial", string="Odoo Tutorial", ondelete="cascade")
-
-
-class OdooModelTransient(models.TransientModel):
-    _name = 'odoo.tutorial.transient'
-    _description = "Odoo Tutorial Transient"
-
-
-class OdooModelAbstract(models.AbstractModel):
-    _name = 'odoo.tutorial.abstract'
-    _description = "Odoo Tutorial Abstract"
-
-
