@@ -4,8 +4,9 @@ from odoo import models, fields, api
 
 
 class OdooTutorial(models.Model):
-    _name = 'odoo.tutorial'
-    _description = 'Odoo Technical Tutorial'
+    _name = "odoo.tutorial"
+    _inherit = ["odoo.tutorial.abstract"]
+    _description = "Odoo Technical Tutorial"
 
     name = fields.Char(string="Name", default="New", index=True, size=100, trim=True)
     total = fields.Integer(string="Total")
@@ -59,7 +60,7 @@ class OdooTutorial(models.Model):
     @api.depends("total")
     def _compute_total(self):
         for record in self:
-            record.total_compute = float(record.value) / 100
+            record.total_compute = float(record.total) / 100
             record.price_total = record.total_compute
 
 
@@ -68,3 +69,6 @@ class OdooTutorialLine(models.Model):
     _description = 'Odoo Technical Tutorial Line'
 
     odoo_tutorial_id = fields.Many2one(comodel_name="odoo.tutorial", string="Odoo Tutorial", ondelete="cascade")
+    name = fields.Char()
+    price_unit = fields.Float()
+    qty = fields.Float(string="Quantity")
