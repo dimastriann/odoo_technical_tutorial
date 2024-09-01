@@ -12,3 +12,6 @@ class OdooModelAbstract(models.AbstractModel):
         ondelete="restrict",
         required=True,
     )
+
+    def _custom_abstract_model_function(self):
+        return

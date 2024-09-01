@@ -1,2 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_odoo_tutorial_odoo_tutorial,odoo_tutorial.odoo_tutorial,model_odoo_tutorial_odoo_tutorial,base.group_user,1,1,1,1
+access_odoo_tutorial_user,odoo.tutorial,model_odoo_tutorial,base.group_user,1,1,1,1
+access_odoo_tutorial_line_user,odoo.tutorial.line,model_odoo_tutorial_line,base.group_user,1,1,1,1
+access_odoo_tutorial_transient_user,odoo.tutorial.transient,model_odoo_tutorial_transient,base.group_user,1,1,1,1
+access_laptop_screen_user,laptop.screen,model_laptop_screen,base.group_user,1,1,1,1
+access_laptop_laptop_user,laptop.laptop,model_laptop_laptop,base.group_user,1,1,1,1
