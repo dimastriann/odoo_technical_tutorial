@@ -5,16 +5,29 @@
         <field name="name">odoo.tutorial.tree</field>
         <field name="model">odoo.tutorial</field>
         <field name="arch" type="xml">
-            <tree>
+<!--            <tree create="0" edit="0" duplicate="0" delete="0" export_xlsx="0">-->
+<!--            <tree editable="top" sample="1" multi_edit="1"-->
+<!--                  default_order="user_id,price_total desc"-->
+<!--                  expand="1" default_group_by="user_id" open_form_view="1">-->
+<!--            <tree sample="1" multi_edit="1"-->
+<!--                  limit="1" groups_limit="1"-->
+<!--                  decoration-info="state == 'draft'"-->
+<!--                  decoration-success="state in ['ready', 'done']"-->
+<!--                  decoration-danger="state == 'cancel'">-->
+            <tree sample="1" multi_edit="1"
+                  decoration-info="state == 'draft'"
+                  decoration-success="state in ['ready', 'done']"
+                  decoration-danger="state == 'cancel'">
                 <field name="name"/>
                 <field name="total"/>
                 <field name="price_total"/>
                 <field name="user_id"/>
-                <field name="active"/>
                 <field name="company_id"/>
                 <field name="currency_id"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
+                <field name="active"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -37,12 +50,13 @@
                             <field name="start_date"/>
                             <field name="end_date"/>
                             <field name="date_only"/>
+                            <field name="state"/>
                         </group>
                        <group>
                            <field name="description"/>
                            <field name="total_compute"/>
                            <field name="tags_ids"/>
-                           <field name="active"/>
+                           <field name="instructor_id"/>
                            <field name="attachment"/>
                            <field name="icon_image"/>
                            <field name="note"/>
