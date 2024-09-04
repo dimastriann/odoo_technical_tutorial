@@ -75,14 +75,27 @@
         <field name="model">odoo.tutorial</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
-                <field name="user_id"/>
-                <field name="company_id"/>
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
+                <field name="user_id" groups="base.group_user"/>
+                <field name="company_id" invisible="1"/>
                 <field name="currency_id"/>
                 <filter name="active" domain="[('active', '=', True)]" string="Active Records"/>
-                <group expand="0" string="Group By">
-                    <filter name="status" string="Status" domain="[]" context="{'group_by': 'state'}"/>
+                <separator/>
+                <filter name="status_draft" domain="[('state', '=', 'draft')]" string="Draft"/>
+                <filter name="status_ready" domain="[('state', '=', 'ready')]" string="Ready"/>
+                <filter name="status_done" domain="[('state', '=', 'done')]" string="Done"/>
+                <filter name="status_cancel" domain="[('state', '=', 'cancel')]" string="Cancel"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_by_status" string="Status" context="{'group_by': 'state'}"/>
+                    <separator/>
+                    <filter name="group_by_user" string="Users" context="{'group_by': 'user_id'}"/>
+                    <filter name="group_by_company" string="Companies" context="{'group_by': 'company_id'}"/>
                 </group>
+                <searchpanel>
+                    <field name="company_id" icon="fa-building" enable_counters="1"/>
+                    <field name="user_id" select="multi" enable_counters="1"/>
+                    <field name="state" />
+                </searchpanel>
             </search>
         </field>
     </record>
