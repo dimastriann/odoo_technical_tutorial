@@ -60,8 +60,20 @@ class OdooTutorial(models.Model):
     @api.depends("total")
     def _compute_total(self):
         for record in self:
-            record.total_compute = float(record.total) / 100
+            record.total_compute = float(record.total)
             record.price_total = record.total_compute
+
+    def action_confirm(self):
+        return self.write({"state": "ready"})
+
+    def action_done(self):
+        return self.write({"state": "done"})
+
+    def action_cancel(self):
+        return self.write({"state": "cancel"})
+
+    def action_view_sales(self):
+        return
 
 
 class OdooTutorialLine(models.Model):
