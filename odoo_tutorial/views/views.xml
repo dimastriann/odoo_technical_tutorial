@@ -37,6 +37,7 @@
         <field name="model">odoo.tutorial</field>
         <field name="arch" type="xml">
             <form>
+<!--             workflow transaction   -->
                 <header>
                     <button name="action_confirm" string="Confirm" type="object" class="btn-primary"
                             invisible="state != 'draft'"/>
@@ -86,18 +87,22 @@
                     <notebook>
                         <page name="line" string="Line">
                             <field name="odoo_tutorial_line">
-                                <tree>
+                                <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="qty"/>
                                     <field name="price_unit"/>
                                 </tree>
                             </field>
                         </page>
-                        <page name="note" string="Note">
+                        <page name="note" string="Catatan">
                             <field name="note"/>
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids"/>
+                    <field name="message_follower_ids"/>
+                </div>
             </form>
         </field>
     </record>
