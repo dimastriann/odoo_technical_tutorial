@@ -37,7 +37,7 @@
         <field name="model">odoo.tutorial</field>
         <field name="arch" type="xml">
             <form>
-<!--             workflow transaction   -->
+                <!--             workflow transaction   -->
                 <header>
                     <button name="action_confirm" string="Confirm" type="object" class="btn-primary"
                             invisible="state != 'draft'"/>
@@ -48,7 +48,9 @@
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <h1><field name="name"/></h1>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                     </div>
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button" name="action_view_sales" type="object" icon="oi-arrows-v">
@@ -137,13 +139,81 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="odoo_tutorial_view_kanban">
+        <field name="name">odoo.tutorial.kanban</field>
+        <field name="model">odoo.tutorial</field>
+        <field name="arch" type="xml">
+<!--            <kanban>-->
+            <kanban records_draggable="1"
+                    groups_draggable="1"
+                    quick_create="1"
+                    quick_create_view="odoo_tutorial.odoo_tutorial_quick_create_kanban"
+                    on_create="odoo_tutorial.action_on_create_kanban"
+                    group_create="0"
+                    group_edit="0"
+                    group_delete="0"
+                    archivable="0"
+                    sample="1"
+                    default_group_by="state">
+<!--                <field name="name"/>-->
+                <field name="state"/>
+                <field name="user_id"/>
+                <progressbar field="state" colors='{"draft": "muted", "ready": "success", "done": "success", "cancel": "danger"}'/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <!--<field name="name"/>-->
+                            <div class="o_kanban_record_top">
+<!--                                <t t-out="record.user_id.raw_value"/>-->
+                                <t t-out="record.user_id.value"/>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <field name="name"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_tutorial_quick_create_kanban">
+        <field name="name">odoo.tutorial.quick.create.kanban</field>
+        <field name="model">odoo.tutorial</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field string="Record Title" name="name"/>
+                    <field name="instructor_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_tutorial_view_calendar">
+        <field name="name">odoo.tutorial.calendar</field>
+        <field name="model">odoo.tutorial</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_only" mode="month">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="action_window_odoo_tutorial">
         <field name="name">Odoo Tutorial</field>
         <field name="res_model">odoo.tutorial</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_on_create_kanban">
+        <field name="name">Odoo Tutorial</field>
+        <field name="res_model">odoo.tutorial</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="odoo_tutorial.odoo_tutorial_quick_create_kanban"/>
+        <field name="target">new</field>
     </record>
 
     <!-- server action to the one above -->
