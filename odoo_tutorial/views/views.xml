@@ -190,12 +190,61 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="odoo_tutorial_quick_create_calendar">
+        <field name="name">odoo.tutorial.quick.create.kanban</field>
+        <field name="model">odoo.tutorial</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field string="Record Title" name="name"/>
+                        <field name="instructor_id"/>
+                    </group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="odoo_tutorial_view_calendar">
         <field name="name">odoo.tutorial.calendar</field>
         <field name="model">odoo.tutorial</field>
         <field name="arch" type="xml">
-            <calendar date_start="date_only" mode="month">
+            <calendar
+                    date_start="start_date"
+                    create="1"
+                    delete="0"
+                    color="state"
+                    event_open_popup="1"
+                    date_stop="end_date"
+                    mode="year"
+                    scales="month,year"
+                    event_limit="3"
+                    quick_create="1"
+                    quick_create_view_id="%(odoo_tutorial.odoo_tutorial_quick_create_calendar)d"
+            >
+<!--            <calendar -->
+<!--                    create="1"-->
+<!--                    delete="1"-->
+<!--                    color="state"-->
+<!--                    event_open_popup="0"-->
+<!--                    date_start="start_date" -->
+<!--                    date_stop="end_date"-->
+<!--                    mode="month" -->
+<!--                    quick_create="1" -->
+<!--                    quick_create_view_id="%(odoo_tutorial.odoo_tutorial_quick_create_calendar)d"-->
+<!--                    scales="month,year"-->
+<!--                    event_limit="5"-->
+<!--            >-->
                 <field name="name"/>
+                <field name="instructor_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="tags_ids" widget="many2many_tags"/>
+                <field name="state" filters="1" invisible="1"/>
             </calendar>
         </field>
     </record>
@@ -205,7 +254,7 @@
     <record model="ir.actions.act_window" id="action_window_odoo_tutorial">
         <field name="name">Odoo Tutorial</field>
         <field name="res_model">odoo.tutorial</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
     </record>
 
     <record model="ir.actions.act_window" id="action_on_create_kanban">
