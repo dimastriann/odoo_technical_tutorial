@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="app_index" name="OWL App Index">
+        &lt;!DOCTYPE html&gt;
+        <html>
+            <head>
+                <title>OWL New App</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta http-equiv="content-type" content="text/html, charset=utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="mobile-web-app-capable" content="yes"/>
+                <!--call the assets app-->
+                <t t-call-assets="owl_framework_tutorial.app_assets" t-css="false"/>
+            </head>
+            <body class="new_owl_app">
+            </body>
+        </html>
+    </template>
+</odoo>

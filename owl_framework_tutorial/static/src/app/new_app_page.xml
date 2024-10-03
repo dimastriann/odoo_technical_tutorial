@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="MyRootComponent">
+        <div class="container-fluid">
+            <h1>New App Page</h1>
+        </div>
+    </t>
+</templates>
