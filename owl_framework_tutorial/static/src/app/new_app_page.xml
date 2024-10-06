@@ -2,7 +2,24 @@
 <templates xml:space="preserve">
     <t t-name="MyRootComponent">
         <div class="container-fluid">
+            <MenuComponent/>
             <h1>New App Page</h1>
+            <MenuComponent2/>
+        </div>
+    </t>
+
+    <t t-name="MenuComponent">
+        <div class="menu-bar">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+            </ul>
+        </div>
+    </t>
+
+    <t t-name="MenuComponent2">
+        <div class="menu-bar2">
+            <p>lorem lorem lorem lorem</p>
         </div>
     </t>
 </templates>

@@ -23,6 +23,8 @@
         "owl_framework_tutorial.app_assets": [
             ("include", "web._assets_core"),
             "web/static/src/module_loader.js",
+            # my assets
+            # "owl_framework_tutorial/static/src/app/**",
             "owl_framework_tutorial/static/src/app/new_app.js",
             "owl_framework_tutorial/static/src/app/new_app_page.xml",
         ],

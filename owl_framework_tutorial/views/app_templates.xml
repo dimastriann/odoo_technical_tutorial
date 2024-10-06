@@ -14,6 +14,7 @@
                 <t t-call-assets="owl_framework_tutorial.app_assets" t-css="false"/>
             </head>
             <body class="new_owl_app">
+                <h1>Templates Index New App</h1>
             </body>
         </html>
     </template>
