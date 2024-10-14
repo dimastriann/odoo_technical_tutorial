@@ -5,6 +5,7 @@
             <MenuComponent/>
             <h1>New App Page</h1>
             <MenuComponent2/>
+            <MyFirstComponent/>
         </div>
     </t>
 
@@ -21,5 +22,9 @@
         <div class="menu-bar2">
             <p>lorem lorem lorem lorem</p>
         </div>
+    </t>
+
+    <t t-name="MyFirstComponent">
+        <button t-on-click="click">Click</button>
     </t>
 </templates>
