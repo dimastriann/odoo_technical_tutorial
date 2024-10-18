@@ -10,6 +10,9 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
                 <meta name="apple-mobile-web-app-capable" content="yes"/>
                 <meta name="mobile-web-app-capable" content="yes"/>
+                <script type="text/javascript">
+                    var odoo = {debug: "<t t-esc="debug"/>"};
+                </script>
                 <!--call the assets app-->
                 <t t-call-assets="owl_framework_tutorial.app_assets" t-css="false"/>
             </head>

@@ -5,7 +5,7 @@
             <MenuComponent/>
             <h1>New App Page</h1>
             <MenuComponent2/>
-            <MyFirstComponent/>
+            <MyFirstComponent counter="1" parentName="name" name="'string'"/>
         </div>
     </t>
 
@@ -26,5 +26,7 @@
 
     <t t-name="MyFirstComponent">
         <button t-on-click="click">Click</button>
+        <p t-out="props.counter"></p>
+        <p t-out="props.parentName"></p>
     </t>
 </templates>

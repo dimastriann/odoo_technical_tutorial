@@ -5,7 +5,7 @@ from odoo.http import request
 
 class OwlFrameworkTutorial(http.Controller):
 
-    @http.route("/owl-framework-tutorial/", type="http", auth="user")
+    @http.route("/owl-framework-tutorial", type="http", auth="user")
     def app_index(self, **kw):
         return request.render('owl_framework_tutorial.app_index', {'object': {}})
 
