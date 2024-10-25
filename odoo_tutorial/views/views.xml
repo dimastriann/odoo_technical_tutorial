@@ -282,12 +282,16 @@
     -->
 
     <!-- Top menu item -->
-    <menuitem name="Odoo Tutorial" id="odoo_tutorial_menu_root" sequence="10"/>
+    <menuitem name="Odoo Tutorial"
+              id="odoo_tutorial_menu_root"
+              groups="odoo_tutorial.group_odoo_tutorial_user"
+              sequence="10"/>
 
     <!-- menu categories -->
     <menuitem name="Odoo Tutorial Data"
               id="odoo_tutorial_menu_data"
               sequence="1"
+              groups="odoo_tutorial.group_odoo_tutorial_user"
               action="odoo_tutorial.action_window_odoo_tutorial"
               parent="odoo_tutorial.odoo_tutorial_menu_root"/>
     <!--    <menuitem name="Menu 2" id="odoo_tutorial.menu_2" parent="odoo_tutorial.menu_root"/>-->

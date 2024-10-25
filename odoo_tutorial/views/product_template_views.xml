@@ -39,6 +39,7 @@
     <menuitem name="Product New"
               id="menu_product_template_new"
               sequence="1"
+              groups="odoo_tutorial.group_odoo_tutorial_manager"
               action="action_product_template_primary"
               parent="odoo_tutorial.odoo_tutorial_menu_root"/>
 </odoo>
