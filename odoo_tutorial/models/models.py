@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError, AccessError, AccessDenied, MissingError, RedirectWarning
 
 
 class OdooTutorial(models.Model):
@@ -65,7 +66,33 @@ class OdooTutorial(models.Model):
             record.price_total = record.total_compute
 
     def action_confirm(self):
-        return self.write({"state": "ready"})
+
+        try:
+            if self.start_date > self.end_date:
+                raise ValidationError("Start date must be before end date.")
+        except Exception as e:
+            raise ValidationError(str(e))
+
+        if self.name and len(self.name) > 15:
+            raise MissingError(f"Field name is too long. {self.name}")
+
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError("Start date must be before end date.")
+
+        # if self.total > 10000:
+        #     raise AccessDenied("Total tidak boleh lebih dari 10000")
+        #
+        # if self.total > 100000:
+        #     raise AccessError("Total tidak boleh lebih dari 100000")
+        #
+        # if self.total > 1000000:
+        #     raise MissingError("Total tidak boleh lebih dari 1000000")
+
+        action_id = self.env.ref("odoo_tutorial.action_product_template_primary").id
+        raise RedirectWarning("Action to Other Menu", action_id, "Products", {})
+
+        # return self.write({"state": "ready"})
 
     def action_done(self):
         return self.write({"state": "done"})
