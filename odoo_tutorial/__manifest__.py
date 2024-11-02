@@ -10,6 +10,7 @@
     "data": [
         'security/ir.model.access.csv',
         "security/res_groups.xml",
+        "security/record_rule.xml",
         "views/views.xml",
         "views/product_template_views.xml",
     ],
